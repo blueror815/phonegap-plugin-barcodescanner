@@ -1,4 +1,4 @@
-# Customized PhoneGap Plugin BarcodeScanner for iOS only
+# Customized Cordova BarcodeScanner Plugin for iOS only
 ================================
 
 [![Build Status](https://travis-ci.org/phonegap/phonegap-plugin-barcodescanner.svg)](https://travis-ci.org/phonegap/phonegap-plugin-barcodescanner)
