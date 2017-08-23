@@ -1158,7 +1158,11 @@ parentViewController:(UIViewController*)parentViewController
     UIImageView *barcodeView = [[UIImageView alloc]initWithFrame:CGRectMake(marginLeft, marginTop, rootViewWidth - marginLeft * 2, rootViewHeight - 2 * marginTop)];
     barcodeView.contentMode = UIViewContentModeScaleAspectFit;
     barcodeView.backgroundColor = [UIColor clearColor];
-    barcodeView.image = [UIImage imageNamed:@"barcode"];
+    NSURL *bundleURL = [[NSBundle mainBundle] URLForResource:@"CDVBarcodeScanner" withExtension:@"bundle"];
+    NSBundle *bundle = [NSBundle bundleWithURL:bundleURL];
+    NSString *imagePath = [bundle pathForResource:@"barcode" ofType:@"png"];
+    barcodeView.image = [UIImage imageWithContentsOfFile:imagePath];
+
     [overlayView addSubview:barcodeView];
     // --------------Added successfully--------------- //
     
