@@ -1077,7 +1077,7 @@ parentViewController:(UIViewController*)parentViewController
     CGRect  rectArea       = CGRectMake(0, rootViewHeight - toolbarHeight, rootViewWidth, toolbarHeight);
     [toolbar setFrame:rectArea];
 
-    [overlayView addSubview: toolbar];
+    // [overlayView addSubview: toolbar];
 
     UIImage* reticleImage = [self buildReticleImage];
     UIView* reticleView = [[[UIImageView alloc] initWithImage:reticleImage] autorelease];
@@ -1171,7 +1171,7 @@ parentViewController:(UIViewController*)parentViewController
     // [viewBottom addSubview:searchField];
     
     // --------------Added scan label "SCAN BARCODE" to the bottom of the scanning area----------------- //
-    UILabel *scanLbl = [[UILabel alloc] initWithFrame:CGRectMake(0.0, marginTop + barcodeView.bounds.size.height, 320, 40)];
+    UILabel *scanLbl = [[UILabel alloc] initWithFrame:CGRectMake(0.0, marginTop + barcodeView.bounds.size.height, rootViewWidth, 40)];
     scanLbl.text = @"SCAN BARCODE";
     scanLbl.textColor = [UIColor whiteColor];
     scanLbl.textAlignment = NSTextAlignmentCenter;
@@ -1193,9 +1193,9 @@ parentViewController:(UIViewController*)parentViewController
     // --------------Added successfully--------------- //
 
     // --------------Add Top Navigation Toolbar with arrow back button ---------- //
-    UIView *navToolBar = [[UIView alloc]initWithFrame:CGRectMake(0, 0, rootViewWidth, toolbarHeight)];
+    UIView *navToolBar = [[UIView alloc]initWithFrame:CGRectMake(0, 0, rootViewWidth, toolbarHeight + 10)];
     navToolBar.backgroundColor = [UIColor redColor];
-    UIButton *arrowBack = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, toolbarHeight)];
+    UIButton *arrowBack = [[UIButton alloc]initWithFrame:CGRectMake(0, 10, 50, toolbarHeight)];
     [arrowBack setBackgroundColor:[UIColor clearColor]];
     [arrowBack setBackgroundImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
     [arrowBack.titleLabel setFont:[UIFont systemFontOfSize:18.0]];
