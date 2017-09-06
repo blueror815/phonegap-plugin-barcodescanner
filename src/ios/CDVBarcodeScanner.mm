@@ -983,7 +983,7 @@ parentViewController:(UIViewController*)parentViewController
 
 #define RETICLE_SIZE    500.0f
 #define RETICLE_WIDTH    5.0f
-#define BOUNDARY_WIDTH   2.0f
+#define BOUNDARY_WIDTH   3.0f
 #define RETICLE_OFFSET   60.0f
 #define RETICLE_ALPHA     0.4f
 #define LOGO_WIDTH      300.0f
@@ -1156,14 +1156,14 @@ parentViewController:(UIViewController*)parentViewController
     
     // --------------Added barcorde-shape overlay image view with opacity and black color over the scanning area------------------- //
     UIImageView *barcodeView = [[UIImageView alloc]initWithFrame:CGRectMake(marginLeft, marginTop, rootViewWidth - marginLeft * 2, rootViewHeight - 2 * marginTop)];
-    barcodeView.contentMode = UIViewContentModeScaleAspectFit;
-    barcodeView.backgroundColor = [UIColor clearColor];
-    NSURL *bundleURL = [[NSBundle mainBundle] URLForResource:@"CDVBarcodeScanner" withExtension:@"bundle"];
-    NSBundle *bundle = [NSBundle bundleWithURL:bundleURL];
-    NSString *imagePath = [bundle pathForResource:@"barcode" ofType:@"png"];
-    barcodeView.image = [UIImage imageWithContentsOfFile:imagePath];
+    // barcodeView.contentMode = UIViewContentModeScaleAspectFit;
+    // barcodeView.backgroundColor = [UIColor clearColor];
+    // NSURL *bundleURL = [[NSBundle mainBundle] URLForResource:@"CDVBarcodeScanner" withExtension:@"bundle"];
+    // NSBundle *bundle = [NSBundle bundleWithURL:bundleURL];
+    // NSString *imagePath = [bundle pathForResource:@"barcode" ofType:@"png"];
+    // barcodeView.image = [UIImage imageWithContentsOfFile:imagePath];
 
-    [overlayView addSubview:barcodeView];
+    // [overlayView addSubview:barcodeView];
     // --------------Added successfully--------------- //
     
     // CGRect someRect = CGRectMake(0.0, 0.0, 100.0, 30.0);
@@ -1180,17 +1180,32 @@ parentViewController:(UIViewController*)parentViewController
     
 
     // --------------Added cancel button to the bottom of whole overlay view------------------- //
-    UIView *viewToolBar = [[UIView alloc]initWithFrame:CGRectMake(0, rootViewHeight - toolbarHeight, rootViewWidth, toolbarHeight)];
-    viewToolBar.backgroundColor = [UIColor clearColor];
-    UIButton *btnCancel = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, rootViewWidth, toolbarHeight)];
-    [btnCancel setTitle:@"Cancel" forState:UIControlStateNormal];
-    [btnCancel setBackgroundColor:[UIColor redColor]];
-    [btnCancel.titleLabel setFont:[UIFont systemFontOfSize:18.0]];
-    [btnCancel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [btnCancel addTarget:self action:@selector(cancelButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    // UIView *viewToolBar = [[UIView alloc]initWithFrame:CGRectMake(0, rootViewHeight - toolbarHeight, rootViewWidth, toolbarHeight)];
+    // viewToolBar.backgroundColor = [UIColor clearColor];
+    // UIButton *btnCancel = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, rootViewWidth, toolbarHeight)];
+    // [btnCancel setTitle:@"Cancel" forState:UIControlStateNormal];
+    // [btnCancel setBackgroundColor:[UIColor redColor]];
+    // [btnCancel.titleLabel setFont:[UIFont systemFontOfSize:18.0]];
+    // [btnCancel setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    // [btnCancel addTarget:self action:@selector(cancelButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
-    [viewToolBar addSubview:btnCancel];
+    // [viewToolBar addSubview:btnCancel];
     // --------------Added successfully--------------- //
+
+    // --------------Add Top Navigation Toolbar with arrow back button ---------- //
+    UIView *navToolBar = [[UIView alloc]initWithFrame:CGRectMake(0, 0, rootViewWidth, toolbarHeight)];
+    navToolBar.backgroundColor = [UIColor redColor];
+    UIButton *arrowBack = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, toolbarHeight)];
+    [arrowBack setBackgroundColor:[UIColor clearColor]];
+    [arrowBack setBackgroundImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
+    [arrowBack.titleLabel setFont:[UIFont systemFontOfSize:18.0]];
+    [arrowBack setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [arrowBack addTarget:self action:@selector(cancelButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [navToolBar addSubview:arrowBack];
+    // --------------Add Top Navigation Toolbar with arrow back button ---------- //
+    
+    [overlayView addSubview:navToolBar];
 
     [overlayView addSubview:viewToolBar];
     
@@ -1223,7 +1238,8 @@ parentViewController:(UIViewController*)parentViewController
 
     if (self.processor.is2D) {
         // UIColor* color = [UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:RETICLE_ALPHA];
-        UIColor *color = [UIColor colorWithWhite:1.0 alpha:0];
+        // UIColor *color = [UIColor colorWithWhite:1.0 alpha:0];
+        UIColor * color = [UIColor redColor];
         CGContextSetStrokeColorWithColor(context, color.CGColor);
         CGContextSetLineWidth(context, BOUNDARY_WIDTH);
         CGContextStrokeRect(context,
