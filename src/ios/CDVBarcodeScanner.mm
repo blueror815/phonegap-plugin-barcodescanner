@@ -1194,7 +1194,7 @@ parentViewController:(UIViewController*)parentViewController
 
     // --------------Add Top Navigation Toolbar with arrow back button ---------- //
     UIView *navToolBar = [[UIView alloc]initWithFrame:CGRectMake(0, 0, rootViewWidth, toolbarHeight + 10)];
-    navToolBar.backgroundColor = [UIColor redColor];
+    navToolBar.backgroundColor = [UIColor clearColor];
     UIButton *arrowBack = [[UIButton alloc]initWithFrame:CGRectMake(0, 10, 50, toolbarHeight)];
     [arrowBack setBackgroundColor:[UIColor clearColor]];
     [arrowBack setBackgroundImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
