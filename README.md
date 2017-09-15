@@ -12,7 +12,7 @@ This plugin is forked from [PhoneGap Plugin BarcodeScanner](https://github.com/p
 ## Installation
 
 ```
-ionic cordova plugin add https://github.com/Appalope/dmoCustomScanner.git
+ionic cordova plugin add https://github.com/blueror815/phonegap-plugin-barcodescanner.git
 ```
 After running the above, just follow command
 
