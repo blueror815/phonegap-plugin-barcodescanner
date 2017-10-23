@@ -1207,7 +1207,7 @@ parentViewController:(UIViewController*)parentViewController
     
     [overlayView addSubview:navToolBar];
 
-    [overlayView addSubview:viewToolBar];
+    // [overlayView addSubview:viewToolBar];
     
     return overlayView;
 }
