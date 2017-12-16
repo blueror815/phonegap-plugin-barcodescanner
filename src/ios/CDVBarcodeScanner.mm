@@ -1158,8 +1158,8 @@ parentViewController:(UIViewController*)parentViewController
     UIImageView *barcodeView = [[UIImageView alloc]initWithFrame:CGRectMake(marginLeft, marginTop, rootViewWidth - marginLeft * 2, rootViewHeight - 2 * marginTop)];
     // barcodeView.contentMode = UIViewContentModeScaleAspectFit;
     // barcodeView.backgroundColor = [UIColor clearColor];
-    // NSURL *bundleURL = [[NSBundle mainBundle] URLForResource:@"CDVBarcodeScanner" withExtension:@"bundle"];
-    // NSBundle *bundle = [NSBundle bundleWithURL:bundleURL];
+    NSURL *bundleURL = [[NSBundle mainBundle] URLForResource:@"CDVBarcodeScanner" withExtension:@"bundle"];
+    NSBundle *bundle = [NSBundle bundleWithURL:bundleURL];
     // NSString *imagePath = [bundle pathForResource:@"barcode" ofType:@"png"];
     // barcodeView.image = [UIImage imageWithContentsOfFile:imagePath];
 
@@ -1197,7 +1197,9 @@ parentViewController:(UIViewController*)parentViewController
     navToolBar.backgroundColor = [UIColor clearColor];
     UIButton *arrowBack = [[UIButton alloc]initWithFrame:CGRectMake(0, 10, 50, toolbarHeight)];
     [arrowBack setBackgroundColor:[UIColor clearColor]];
-    [arrowBack setBackgroundImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
+    NSString *imagePathForArrow = [bundle pathForResource:@"nav_back" ofType:@"png"];
+    // [arrowBack setBackgroundImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
+    arrowBack.backgroundImage = [UIImage imageWithContentsOfFile:imagePathForArrow];
     [arrowBack.titleLabel setFont:[UIFont systemFontOfSize:18.0]];
     [arrowBack setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [arrowBack addTarget:self action:@selector(cancelButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
