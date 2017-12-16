@@ -1198,8 +1198,8 @@ parentViewController:(UIViewController*)parentViewController
     UIButton *arrowBack = [[UIButton alloc]initWithFrame:CGRectMake(0, 10, 50, toolbarHeight)];
     [arrowBack setBackgroundColor:[UIColor clearColor]];
     NSString *imagePathForArrow = [bundle pathForResource:@"nav_back" ofType:@"png"];
-    // [arrowBack setBackgroundImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
-    arrowBack.backgroundImage = [UIImage imageWithContentsOfFile:imagePathForArrow];
+    [arrowBack setBackgroundImage:[UIImage imageWithContentsOfFile:imagePathForArrow] forState:UIControlStateNormal];
+    // arrowBack.backgroundImage = [UIImage imageWithContentsOfFile:imagePathForArrow];
     [arrowBack.titleLabel setFont:[UIFont systemFontOfSize:18.0]];
     [arrowBack setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [arrowBack addTarget:self action:@selector(cancelButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
