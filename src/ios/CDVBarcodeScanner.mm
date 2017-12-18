@@ -1101,8 +1101,8 @@ parentViewController:(UIViewController*)parentViewController
         | UIViewAutoresizingFlexibleBottomMargin)
     ;
 
-    [overlayView addSubview: reticleView];
-    
+    // [overlayView addSubview: reticleView];
+    // If you want rectangle scanner area, just comment out the above line.
     
     // ------Adding custom top view with opacity and black color around scanning area with opcity---------- //
     CGFloat REAL_OFFSET = RETICLE_OFFSET - RETICLE_WIDTH / 2.0;
@@ -1118,7 +1118,7 @@ parentViewController:(UIViewController*)parentViewController
     viewTop.backgroundColor = [UIColor blackColor];
     viewTop.alpha = RETICLE_ALPHA;
     
-    [overlayView addSubview:viewTop];
+    // [overlayView addSubview:viewTop];
     // ------Added successfully------------- //
 
     // ---Added logo image here, will be updated later-----
@@ -1133,7 +1133,7 @@ parentViewController:(UIViewController*)parentViewController
     viewLeft.backgroundColor = [UIColor blackColor];
     viewLeft.alpha = RETICLE_ALPHA;
     
-    [overlayView addSubview:viewLeft];
+    // [overlayView addSubview:viewLeft];
     // --------------Added successfully--------------- //
     
 
@@ -1142,7 +1142,7 @@ parentViewController:(UIViewController*)parentViewController
     viewRight.backgroundColor = [UIColor blackColor];
     viewRight.alpha = RETICLE_ALPHA;
     
-    [overlayView addSubview:viewRight];
+    // [overlayView addSubview:viewRight];
     // --------------Added successfuly --------------- //
 
 
@@ -1151,19 +1151,22 @@ parentViewController:(UIViewController*)parentViewController
     viewBottom.backgroundColor = [UIColor blackColor];
     viewBottom.alpha = RETICLE_ALPHA;
     
-    [overlayView addSubview:viewBottom];
+    // [overlayView addSubview:viewBottom];
     // --------------Added successfully--------------- //
     
     // --------------Added barcorde-shape overlay image view with opacity and black color over the scanning area------------------- //
-    UIImageView *barcodeView = [[UIImageView alloc]initWithFrame:CGRectMake(marginLeft, marginTop, rootViewWidth - marginLeft * 2, rootViewHeight - 2 * marginTop)];
+    // UIImageView *barcodeView = [[UIImageView alloc]initWithFrame:CGRectMake(marginLeft, marginTop, rootViewWidth - marginLeft * 2, rootViewHeight - 2 * marginTop)];
     // barcodeView.contentMode = UIViewContentModeScaleAspectFit;
     // barcodeView.backgroundColor = [UIColor clearColor];
+    UIImageView *barcodeView = [[UIImageView alloc]initWithFrame: CGRectMake(0, 0, rootViewWidth, rootViewHeight)];
+    barcodeView.contentMode = UIViewContentModeScaleAspectFit;
+    barcodeView.backgroundColor = [UIColor clearColor];
     NSURL *bundleURL = [[NSBundle mainBundle] URLForResource:@"CDVBarcodeScanner" withExtension:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithURL:bundleURL];
-    // NSString *imagePath = [bundle pathForResource:@"barcode" ofType:@"png"];
-    // barcodeView.image = [UIImage imageWithContentsOfFile:imagePath];
+    NSString *imagePath = [bundle pathForResource:@"scan_qrcode" ofType:@"png"];
+    barcodeView.image = [UIImage imageWithContentsOfFile:imagePath];
 
-    // [overlayView addSubview:barcodeView];
+    [overlayView addSubview:barcodeView];
     // --------------Added successfully--------------- //
     
     // CGRect someRect = CGRectMake(0.0, 0.0, 100.0, 30.0);
@@ -1175,7 +1178,7 @@ parentViewController:(UIViewController*)parentViewController
     scanLbl.text = @"SCAN BARCODE";
     scanLbl.textColor = [UIColor whiteColor];
     scanLbl.textAlignment = NSTextAlignmentCenter;
-    [overlayView addSubview:scanLbl];
+    // [overlayView addSubview:scanLbl];
     // --------------Added successfully---------------- //
     
 
